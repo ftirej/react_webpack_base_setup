@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslinter": "^3.2.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13",
     "prettier": "^2.1.1"
   }
 }
