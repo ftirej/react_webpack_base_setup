@@ -1,17 +1,21 @@
 {
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "plugins": ["jsx-a11y", "react", "prettier"],
+  "extends": ["eslint:recommended", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended", "airbnb", "airbnb/hooks"],
+  "rules": {
+    "strict": ["error", "never"]
+  },
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "plugins": ["jsx-a11y"],
-    "extends": ["eslint:recommended", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended"],
-    "rules": {
-      "strict": ["error", "never"]
-    },
-    "env": {
-      "browser": true
     }
   }
 }
