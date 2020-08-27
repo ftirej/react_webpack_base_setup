@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env webpack-dev-server --config webpack.dev.js",
-    "build:dev": "webpack --progress --config webpack.dev.js"
+    "build": "webpack --progress --config webpack.prod.js",
+    "build:dev": "webpack --progress --config webpack.dev.js",
+    "lint": "eslint . --ext .js, .jsx --fix",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|vue)\""
   },
   "keywords": [],
   "author": "Fernando Tirell",
