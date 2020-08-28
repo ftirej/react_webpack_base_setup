@@ -10,20 +10,13 @@ const config = merge(common.config, {
     filename: 'js/[name].js',
     chunkFilename: 'js/[name].chunk.js',
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[name].chunk.css',
-    }),
-  ],
   module: {
     rules: [
       {
         test: /\.(sa|sc|c)ss$/,
         exclude: /\.module\.(sa|sc|c)ss$/,
         use: [
-          'css-hot-loader',
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           common.CSSLoader,
           common.PostCSSLoader,
           'sass-loader',
@@ -32,9 +25,8 @@ const config = merge(common.config, {
       {
         test: /\.module\.(sa|sc|c)ss$/,
         use: [
-          'css-hot-loader',
-          MiniCssExtractPlugin.loader,
-          common.CSSModuleLoader,
+          'style-loader',
+          common.CSSLoader,
           common.PostCSSLoader,
           'sass-loader',
         ],

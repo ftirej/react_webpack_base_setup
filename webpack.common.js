@@ -15,7 +15,7 @@ const CSSModuleLoader = {
 const CSSLoader = {
   loader: 'css-loader',
   options: {
-    modules: false,
+    modules: false
   },
 };
 
@@ -23,7 +23,7 @@ const PostCSSLoader = {
   loader: 'postcss-loader',
   options: {
     ident: 'postcss',
-    sourceMap: false, // turned off as causes delay
+    sourceMap: true, // turned off as causes delay
     plugins: () => [require('autoprefixer')],
   },
 };
@@ -46,6 +46,7 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, 'src'),
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -58,24 +59,6 @@ const config = {
         test: /\.json$/,
         loader: 'json-loader',
         type: 'javascript/auto',
-      },
-      {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          CSSLoader,
-          PostCSSLoader,
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.module\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          CSSModuleLoader,
-          PostCSSLoader,
-          'sass-loader',
-        ],
       },
       {
         test: /\.(jpe?g|png|gif|ico)$/i,
@@ -109,7 +92,7 @@ const config = {
   },
   resolve: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.css', 'less', '.scss', 'sass'],
   },
 };
 

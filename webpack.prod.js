@@ -4,7 +4,7 @@ const common = require('./webpack.common.js');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = merge(common.config, {
+const config = merge(common.config, {
   mode: 'production',
   devtool: 'source-map',
   output: {
@@ -17,4 +17,29 @@ module.exports = merge(common.config, {
       chunkFilename: 'css/[name].[contenthash:8].chunk.css',
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /\.module\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          common.CSSLoader,
+          common.PostCSSLoader,
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.module\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          common.CSSLoader,
+          common.PostCSSLoader,
+          'sass-loader',
+        ],
+      },
+    ],
+  },
 });
+
+module.exports = config;
