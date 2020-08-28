@@ -1,5 +1,8 @@
 import React from 'react';
+import { render } from '@testing-library/react';
+import App from '../App';
 
 test('it works', () => {
-  expect(1).toBe(1);
+  const { getAllByText } = render(<App />);
+  expect(getAllByText(/Hello World/i)).toBeTruthy();
 });
